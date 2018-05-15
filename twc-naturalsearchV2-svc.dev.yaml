@@ -1,0 +1,91 @@
+template: Search Api, %s!
+
+defaultName: ${DW_DEFAULT_NAME:-SearchApi}
+
+server:
+  rootPath: /naturalsearch/v2.0/*
+  applicationConnectors:
+  - type: http
+    port: 9090
+  adminConnectors:
+  - type: http
+    port: 9191
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+    - type: file
+      threshold: ALL
+      #target: stdout
+      logFormat: "%-6level [%d] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /opt/twc/naturalsearch/dropwizard/logs/v2Search.log
+      archivedLogFilenamePattern: /opt/twc/naturalsearch/dropwizard/logs/v2Search-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+      maxFileSize: 10MB
+
+natSearchTImeZonePath: /opt/twc/naturalsearch/dropwizrd/conf/naturalsearchTimezones-20161104.properties
+
+natSearchConfig:
+  - env: Lab
+    natSearchConfigServerHostName: spectrum-staging-admin-0.digitalsmiths.net
+    natSearchConfigAdminServerHostName: spectrum-staging-admin-0.digitalsmiths.net
+    natSearchConfigDsPopulation: spectrum-sandbox
+    natSearchConfigDsVersion: 7.1
+    natSearchApplicationName: NationalNavigation
+    natSearchApplicationVersion: 1.0
+    natSearchConfigAuthKey: 84145E5A-58EA-4F63-BF6A-E5E30E01DDDD
+    natSearchConfigAuthSecret: m1j0Bav3UI6w.sXW
+    connectTimeoutSecs: 5
+    socketReadTimeoutSecs: 0
+    connPoolTimeoutSecs: 0
+    adminUser: dsload
+    adminPass: dsLoadPass
+    dsEnv: LAB
+  - env: Lab-Staging
+    natSearchConfigServerHostName: spectrum-staging-admin-0.digitalsmiths.net
+    natSearchConfigAdminServerHostName: spectrum-staging-admin-0.digitalsmiths.net
+    natSearchConfigDsPopulation: spectrum-staging
+    natSearchConfigDsVersion: 7.1
+    natSearchApplicationName: NationalNavigation
+    natSearchApplicationVersion: 1.0
+    natSearchConfigAuthKey: 84145E5A-58EA-4F63-BF6A-E5E30E01DDDD
+    natSearchConfigAuthSecret: m1j0Bav3UI6w.sXW
+    connectTimeoutSecs: 5
+    socketReadTimeoutSecs: 0
+    connPoolTimeoutSecs: 0
+    adminUser: dsload
+    adminPass: dsLoadPass
+    dsEnv: LAB
+  - env: default
+    natSearchConfigServerHostName: spectrum-staging-admin-0.digitalsmiths.net
+    natSearchConfigAdminServerHostName: spectrum-staging-admin-0.digitalsmiths.net
+    natSearchConfigDsPopulation: spectrum-staging
+    natSearchConfigDsVersion: 7.1
+    natSearchApplicationName: NationalNavigation
+    natSearchApplicationVersion: 1.0
+    natSearchConfigAuthKey: 84145E5A-58EA-4F63-BF6A-E5E30E01DDDD
+    natSearchConfigAuthSecret: m1j0Bav3UI6w.sXW
+    connectTimeoutSecs: 5
+    socketReadTimeoutSecs: 0
+    connPoolTimeoutSecs: 0
+    adminUser: dsload
+    adminPass: dsLoadPass
+    dsEnv: LAB
+
+loadCache: true
+reLoadCacheTime: 28800000 # every 8 hours 1000*60*60*8
+
+#mongo configuration
+mongoHost: 69.76.81.73
+dbName: wiretap
+dbPort: 27017
+dbUserName:
+dbPassword:
+jobRunningInterval: 420 #7 min = 420 sec
+trendingLinearListName: TrendingPrgSvcId
+
+swagger:
+  resourcePackage: com.twc.naturalsearchV2.service
+
