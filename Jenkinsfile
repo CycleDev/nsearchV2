@@ -1,9 +1,5 @@
 node {
-    environment {
-        // Update this version number as needed.
-        // The rest of the code should stay the same.
-        JAR_VERSION="6.2.0"
-    }
+    def JAR_VERSION="6.2.0"
 
     stage('Clone repository') {
         // Edit these properties
