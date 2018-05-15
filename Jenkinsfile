@@ -1,13 +1,11 @@
-pipeline {
-  agent any
-  environment {
-    // Update this version number as needed.
-    // The rest of the code should stay the same.
-    JAR_VERSION="6.2.0"
-  }
-  stages {
+node {
+    environment {
+        // Update this version number as needed.
+        // The rest of the code should stay the same.
+        JAR_VERSION="6.2.0"
+    }
+
     stage('Clone repository') {
-      steps {
         // Edit these properties
         print "JAR version will be ${JAR_VERSION}"
 
@@ -19,13 +17,11 @@ pipeline {
         // List the files currently in the workspace
         print "Files in workspace:"
         sh "ls"
-      }
     }
+
     stage('Build') {
-      steps {
-        // Create docker image. It contains everything for deployment.
-        print "Build docker image"
-      }
+         // Create docker image. It contains everything for deployment.
+         print "Build docker image"
+         docker.build("naturalsearchV2-svc")
     }
-  }
 }
