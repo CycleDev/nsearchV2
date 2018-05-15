@@ -18,6 +18,6 @@ node {
     stage('Build') {
          // Create docker image. It contains everything for deployment.
          print "Build docker image"
-         docker.build("naturalsearch")
+         docker.build("naturalsearchv2-svc")
     }
 }
