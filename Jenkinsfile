@@ -14,7 +14,7 @@ pipeline {
         // Jenkins automatically retrieved the YAML and Dockerfile from BitBucket when it retrieved this Jenkinsfile
 
         // Retrieve the uberjar from Nexus
-        sh "curl http://nexus.charterlab.com/content/groups/public/com/twc/naturalsearchV2-svc/twc-naturalsearchV2-svc/${JAR_VERSION}/twc-naturalsearchV2-svc-${JAR_VERSION}.jar --output twc-naturalsearchV2-svc.jar"
+        //sh "curl http://nexus.charterlab.com/content/groups/public/com/twc/naturalsearchV2-svc/twc-naturalsearchV2-svc/${JAR_VERSION}/twc-naturalsearchV2-svc-${JAR_VERSION}.jar --output twc-naturalsearchV2-svc.jar"
 
         // List the files currently in the workspace
         print "Files in workspace:"
